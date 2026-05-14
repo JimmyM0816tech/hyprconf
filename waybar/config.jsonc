@@ -1,0 +1,106 @@
+{
+    "layer": "top",
+    "width": 1600,
+    "modules-left": [
+        "custom/rofi",
+        "hyprland/workspaces",
+        "custom/pacman"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "battery",
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "custom/power",
+        "tray"
+    ],
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "AC",
+        "interval": 5,
+        "format": "{icon}: {capacity}%",
+        "format-charging": "󰂄: {capacity}%",
+        "format-not-charging": "󱟨: {capacity}%",
+        "format-full": "󱟢: {capacity}%",
+        "format-icons": {
+            "discharging": [ "", "", "", "", "" ],
+        }
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "pulseaudio": {
+        "format": "{icon}: {volume}%",
+        "format-bluetooth": "{icon}: {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "phone-muted": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+    "cpu": {
+        "interval": 10,
+        "format": ": {}%",
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "sort-by-number": true
+    },
+    "network": {
+        "interface": "wlo1",
+        "format": "{ifname}",
+        "format-wifi": "󰖩: {essid} {signalStrength}%",
+        "format-ethernet": ": {ipaddr}/{cidr}",
+        "format-disconnected": "󰌙", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "󰖩: {essid} {signalStrength}%",
+        "tooltip-format-ethernet": ": {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "wifirofi"
+    },
+    "memory": {
+        "interval": 30,
+        "format": ": {}%"
+    },
+    "tray": {
+    "icon-size": 20,
+    "spacing": 8,
+    "reverse-direction": false
+   },
+   "custom/pacman": {
+    "format": "󰏕: {}",
+    "interval": "once",
+    "exec": "checkupdates | wc -l",
+    "on-click": "kitty --hold yay -Syu && exit",
+    "signal": 8,
+    "tooltip-format": "{} updates verfügbar"
+  },
+  "custom/rofi": {
+    "format": " 󰀻 ",
+    "on-click": "rofi -show drun",
+    "tooltip": false
+  },
+  "custom/power": {
+    "format": " 󰐥 ",
+    "on-click": "powerrofi",
+    "tooltip": false 
+  }
+}
